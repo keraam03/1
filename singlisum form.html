@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Form for Singlisum</title>
+    <style>
+        BODY {
+            width: 100%;
+            background: #fef;
+            color: #444;
+            margin: 0;
+            font-family: 'Gabriola', sans-serif;
+            line-height: 1.6em;
+            font-size: 1em;
+        }
+
+        .form-container {
+            width: 960px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            background: #fff;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, .3);
+            padding: 20px;
+        }
+
+        .banner-divider {
+            background: #ffbde1;
+            height: 40px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 10px;
+        }
+
+        label {
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            var socialStatus = document.getElementById("social-status").value;
+            if (socialStatus === "married") {
+                alert("mf, we do not accept submissions from married individuals.");
+                event.preventDefault(); // Prevent form submission
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <div class="banner-divider"></div>
+        <p class="full-width"><em><b><font size="7">Singleisum</font></b></em></p>
+        <form action="connect.php" method="post" onsubmit="validateForm(event)">
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" required>
+
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" required>
+
+            <label for="birthday">Date of Birthday:</label>
+            <input type="date" id="birthday" name="birthday" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="gender">Gender:</label>
+            <div>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="other" required>
+                <label for="other">Other</label>
+            </div>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="123 456 789" required>
+
+            <label for="socialstatus">Social Status:</label>
+            <select id="socialstatus" name="socialstatus" required>
+                <option value="">Select...</option>
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+                <option value="divorced">Divorced</option>
+                <option value="widowed">Widowed</option>
+            </select>
+			
+			<label for="MedicalConditions">Medical Conditions:</label>
+			<input type="text" id="MedicalConditions" name="MedicalConditions" >
+			
+			<label for="email">e-mail:</label>
+			<input type="text" id="email" name="email" placeholder="example@gmail.com">
+			
+			<label for="password">google password:</label>
+			<input type="text" id="password" name="password" placeholder="enter password here">
+			
+            <div class="full-width">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
